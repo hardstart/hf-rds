@@ -23,7 +23,7 @@ provider "aws" {
 }
 
 module "rds" {
-  source  = "app.terraform.io/healthfirst/rds/aws"
+  source  = "app.terraform.io/healthfirst/hf-rds/aws"
   version = "1.0.0"
   
   cluster_name            = var.cluster_name
