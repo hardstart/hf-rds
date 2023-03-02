@@ -9,7 +9,18 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
-provider "aws" {}
+locals {
+  cost_center = lookup(var.cost_centers, var.cost_center)
+  default_tags = {
+    "Environment"   = var.environment
+  }
+}
+
+provider "aws" {
+  default_tags {
+    tags =  merge(local.default_tags, local.cost_center)
+  }
+}
 
 module "rds" {
   source  = "app.terraform.io/healthfirst/rds/aws"
@@ -22,8 +33,6 @@ module "rds" {
   environment             = var.environment
   subnet_type             = var.subnet_type
   skip_final_snapshot     = true
-  cost_center             = var.cost_center
   ami_filters             = var.ami_filters
   account_vars            = var.account_vars
-  cost_centers            = var.cost_centers
 }
