@@ -33,6 +33,5 @@ module "rds" {
   environment             = var.environment
   subnet_type             = var.subnet_type
   skip_final_snapshot     = true
-  ami_filters             = var.ami_filters
   account_vars            = var.account_vars
 }
