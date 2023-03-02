@@ -13,6 +13,8 @@ locals {
   cost_center = lookup(var.cost_centers, var.cost_center)
   default_tags = {
     "Environment"   = var.environment
+    "Name"          = ""
+    "Service Role"  = ""
   }
 }
 
