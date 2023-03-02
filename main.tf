@@ -24,7 +24,7 @@ provider "aws" {
 
 module "rds" {
   source  = "app.terraform.io/healthfirst/hf-rds/aws"
-  version = "1.2.0"
+  version = "1.3.0"
   
   cluster_name            = var.cluster_name
   database_name           = var.database_name
